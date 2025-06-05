@@ -108,7 +108,7 @@
 			return;
 		}
 		if (userBalance <= 100_000) {
-			toast.error('You need at least $100,000 in your portfolio to create a question.');
+			toast.error('You need at least $100,000 in your portfolio (cash) to create a question.');
 			return;
 		}
 		showCreateDialog = true;
@@ -274,7 +274,7 @@
 									<div class="flex items-center gap-1">
 										<Clock class="h-3 w-3" />
 										{#if question.status === 'ACTIVE'}
-											{formatTimeUntil(question.resolutionDate)} remaining
+											{formatTimeUntil(question.resolutionDate).startsWith('Ended') ? 'Resolving' : `${formatTimeUntil(question.resolutionDate)} remaining`}
 										{:else}
 											Resolved {formatDateWithYear(question.resolvedAt || '')}
 										{/if}
