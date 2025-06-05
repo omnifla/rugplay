@@ -60,7 +60,7 @@ export interface QuestionResolutionResult {
 // Helper function to get specific coin data
 async function getCoinData(coinSymbol: string) {
     try {
-        const normalizedSymbol = coinSymbol.toUpperCase().replace('*', '');
+        const normalizedSymbol = coinSymbol.toUpperCase().replace(/\*/g, '');
 
         const [coinData] = await db
             .select({
